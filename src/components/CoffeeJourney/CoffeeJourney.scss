@@ -1,0 +1,133 @@
+@use '../../styles/variables' as *;
+
+.journey {
+  background: linear-gradient(180deg, $stone 0%, rgba($sand-light, 0.2) 100%);
+  overflow: hidden;
+}
+
+.journey-header {
+  max-width: 600px;
+  margin-bottom: 5rem;
+  text-align: left;
+}
+
+.journey-timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.journey-timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba($terracotta, 0.2) 10%,
+    rgba($terracotta, 0.2) 90%,
+    transparent
+  );
+  transform-origin: top center;
+
+  @media (max-width: $bp-tablet) {
+    left: 20px;
+  }
+}
+
+.journey-step {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 4rem;
+
+  &--left {
+    justify-content: flex-start;
+    padding-right: calc(50% + 2rem);
+    text-align: right;
+
+    @media (max-width: $bp-tablet) {
+      padding-right: 0;
+      padding-left: 50px;
+      text-align: left;
+    }
+  }
+
+  &--right {
+    justify-content: flex-end;
+    padding-left: calc(50% + 2rem);
+
+    @media (max-width: $bp-tablet) {
+      padding-left: 50px;
+    }
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.journey-dot {
+  position: absolute;
+  left: 50%;
+  top: 0.5rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: $stone;
+  border: 2px solid $terracotta;
+  transform: translateX(-50%);
+  z-index: 2;
+
+  @media (max-width: $bp-tablet) {
+    left: 20px;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    border-radius: 50%;
+    background: $terracotta;
+  }
+}
+
+.journey-step-content {
+  max-width: 350px;
+}
+
+.journey-step-icon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  line-height: 1;
+}
+
+.journey-step-subtitle {
+  font-family: $font-body;
+  font-size: $text-xs;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $terracotta;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.journey-step-title {
+  font-family: $font-display;
+  font-size: $text-2xl;
+  font-weight: 400;
+  color: $charcoal;
+  margin-bottom: 0.75rem;
+}
+
+.journey-step-text {
+  font-family: $font-body;
+  font-size: $text-sm;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba($charcoal, 0.55);
+}

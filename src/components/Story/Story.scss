@@ -1,0 +1,133 @@
+@use '../../styles/variables' as *;
+
+.story {
+  background: $stone;
+  overflow: hidden;
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  align-items: start;
+
+  @media (min-width: $bp-desktop) {
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+  }
+}
+
+.story-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.story-title {
+  margin-bottom: 0.5rem;
+}
+
+.story-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+
+  p {
+    font-family: $font-body;
+    font-size: $text-base;
+    font-weight: 300;
+    line-height: 1.8;
+    color: rgba($charcoal, 0.65);
+  }
+}
+
+.story-stats {
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 1rem;
+  padding-top: 2rem;
+  border-top: $border-subtle;
+}
+
+.story-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.story-stat-number {
+  font-family: $font-display;
+  font-size: $text-2xl;
+  font-weight: 400;
+  color: $terracotta;
+  line-height: 1;
+}
+
+.story-stat-label {
+  font-family: $font-body;
+  font-size: $text-xs;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba($charcoal, 0.45);
+}
+
+.story-visual {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.story-image-wrapper {
+  position: relative;
+}
+
+.story-image-parallax {
+  will-change: transform;
+}
+
+.story-image {
+  aspect-ratio: 3 / 4;
+  border-radius: 2px;
+}
+
+.story-image-accent {
+  position: absolute;
+  bottom: -16px;
+  right: -16px;
+  width: 60%;
+  height: 60%;
+  border: 1px solid rgba($terracotta, 0.15);
+  border-radius: 2px;
+  z-index: -1;
+}
+
+.story-map {
+  position: relative;
+  padding: 1.5rem;
+
+  svg {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.story-map-labels {
+  position: absolute;
+  inset: 0;
+
+  span {
+    position: absolute;
+    font-family: $font-body;
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba($charcoal, 0.4);
+  }
+}
+
+.story-map-route {
+  stroke-dasharray: 1000;
+}
