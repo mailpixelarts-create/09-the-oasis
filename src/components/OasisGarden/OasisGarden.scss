@@ -1,0 +1,179 @@
+@use '../../styles/variables' as *;
+
+.garden {
+  background: linear-gradient(180deg, $stone 0%, rgba($sand-light, 0.3) 100%);
+  overflow: hidden;
+}
+
+.garden-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+
+  @media (min-width: $bp-desktop) {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+}
+
+.garden-text-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.garden-features {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.garden-feature {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.garden-feature-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba($terracotta, 0.2);
+  border-radius: 50%;
+  color: $terracotta;
+}
+
+.garden-feature-title {
+  font-family: $font-display;
+  font-size: $text-base;
+  font-weight: 400;
+  color: $charcoal;
+  margin-bottom: 0.25rem;
+}
+
+.garden-feature-text {
+  font-family: $font-body;
+  font-size: $text-sm;
+  font-weight: 300;
+  color: rgba($charcoal, 0.5);
+  line-height: 1.6;
+}
+
+.garden-scene {
+  position: relative;
+}
+
+.garden-scene-wrapper {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border-radius: 4px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #2a3a4a 0%, #1a2a3a 40%, rgba($oasis-green, 0.15) 100%);
+}
+
+.garden-sky {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 20%,
+    rgba($dune, 0.15) 0%,
+    transparent 50%
+  );
+}
+
+.garden-sunbeams {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.garden-sunbeam {
+  position: absolute;
+  top: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    rgba($sand, 0.2) 0%,
+    rgba($sand, 0.05) 100%
+  );
+  transform-origin: top center;
+}
+
+.garden-palm {
+  position: absolute;
+  bottom: 30%;
+  will-change: transform;
+
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  &--1 {
+    left: 5%;
+    width: 35%;
+  }
+
+  &--2 {
+    right: 10%;
+    width: 28%;
+    bottom: 25%;
+  }
+
+  &--3 {
+    left: 35%;
+    width: 22%;
+    bottom: 32%;
+  }
+}
+
+.garden-water {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30%;
+  background: linear-gradient(
+    to bottom,
+    rgba($oasis-green, 0.08) 0%,
+    rgba($oasis-green, 0.15) 100%
+  );
+  overflow: hidden;
+}
+
+.garden-water-shimmer {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba($sand, 0.2) 50%,
+    transparent 100%
+  );
+
+  &--2 {
+    top: 50%;
+    left: 20%;
+    width: 60%;
+  }
+}
+
+.garden-water-reflection {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    rgba($oasis-green, 0.03) 2px,
+    transparent 4px
+  );
+}

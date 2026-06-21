@@ -1,0 +1,183 @@
+@use '../../styles/variables' as *;
+
+.signature {
+  background: $charcoal;
+  color: $stone;
+
+  .section-label {
+    color: $dune;
+
+    &::before {
+      background: $dune;
+    }
+  }
+
+  .section-title {
+    color: $stone;
+  }
+
+  .section-subtitle {
+    color: rgba($stone, 0.5);
+  }
+}
+
+.signature-header {
+  max-width: 600px;
+  margin-bottom: 4rem;
+}
+
+.signature-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+
+  @media (min-width: $bp-tablet) {
+    grid-template-columns: repeat(2);
+    gap: 2.5rem;
+  }
+
+  @media (min-width: $bp-wide) {
+    grid-template-columns: repeat(4);
+    gap: 2rem;
+  }
+}
+
+.signature-card {
+  position: relative;
+  background: rgba($stone, 0.03);
+  border: 1px solid rgba($stone, 0.06);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: all $transition-base;
+
+  &:hover {
+    border-color: rgba($dune, 0.2);
+    transform: translateY(-4px);
+
+    .card-image img {
+      transform: scale(1.05);
+    }
+
+    .card-ingredients {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+.card-sand-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.card-sand-particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: $dune;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.6s ease;
+}
+
+.card-image-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-image {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform $transition-slow;
+  }
+}
+
+.card-number {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-family: $font-display;
+  font-size: $text-3xl;
+  font-weight: 400;
+  color: rgba($stone, 0.15);
+  line-height: 1;
+}
+
+.card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.card-name {
+  font-family: $font-display;
+  font-size: $text-lg;
+  font-weight: 400;
+  color: $stone;
+}
+
+.card-price {
+  font-family: $font-body;
+  font-size: $text-sm;
+  font-weight: 400;
+  color: $dune;
+  white-space: nowrap;
+}
+
+.card-description {
+  font-family: $font-body;
+  font-size: $text-sm;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba($stone, 0.5);
+}
+
+.card-ingredients {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all $transition-base;
+  padding-top: 1rem;
+  border-top: 1px solid rgba($stone, 0.06);
+}
+
+.card-ingredients-label {
+  font-family: $font-body;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $terracotta;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.card-ingredients-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  li {
+    font-family: $font-body;
+    font-size: 0.7rem;
+    font-weight: 300;
+    color: rgba($stone, 0.4);
+    padding: 0.25rem 0.6rem;
+    border: 1px solid rgba($stone, 0.08);
+    border-radius: 2px;
+  }
+}

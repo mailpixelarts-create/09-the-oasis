@@ -1,0 +1,231 @@
+@use '../../styles/variables' as *;
+@use '../../styles/animations' as *;
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    rgba($charcoal, 0.95) 0%,
+    rgba($charcoal, 0.85) 40%,
+    rgba($dune-dark, 0.3) 100%
+  );
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero-gradient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 30%,
+    rgba($terracotta, 0.08) 0%,
+    transparent 60%
+  );
+}
+
+.hero-sun {
+  position: absolute;
+  top: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.hero-sun-core {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba($dune, 0.4) 0%,
+    rgba($terracotta, 0.15) 50%,
+    transparent 70%
+  );
+}
+
+.hero-sun-glow {
+  position: absolute;
+  inset: -60px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba($sand, 0.06) 0%,
+    transparent 70%
+  );
+}
+
+.hero-mountains {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  will-change: transform;
+
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.hero-dunes {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  will-change: transform;
+
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.hero-palm {
+  position: absolute;
+  bottom: 0;
+  will-change: transform;
+
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  &-left {
+    left: -2%;
+    width: clamp(100px, 15vw, 250px);
+  }
+
+  &-right {
+    right: -1%;
+    width: clamp(80px, 12vw, 200px);
+  }
+}
+
+.hero-water {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 120px;
+}
+
+.hero-water-ripple {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba($oasis-green, 0.15);
+  animation: waterRipple 4s ease-out infinite;
+
+  &--2 {
+    animation-delay: 2s;
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 $container-padding;
+  will-change: transform, opacity;
+}
+
+.hero-subtitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+
+  span:not(.hero-subtitle-line) {
+    font-family: $font-body;
+    font-size: $text-xs;
+    font-weight: 400;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: $sand;
+  }
+}
+
+.hero-subtitle-line {
+  width: 40px;
+  height: 1px;
+  background: rgba($sand, 0.3);
+}
+
+.hero-title {
+  margin-bottom: 2rem;
+}
+
+.hero-title-line-wrap {
+  overflow: hidden;
+  line-height: 0.9;
+}
+
+.hero-title-line {
+  display: block;
+  font-family: $font-display;
+  font-size: $text-hero;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: $stone;
+  line-height: 0.95;
+
+  &--accent {
+    color: $sand;
+    font-size: calc(#{$text-hero} * 1.15);
+  }
+}
+
+.hero-description {
+  font-family: $font-body;
+  font-size: $text-base;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba($stone, 0.6);
+  max-width: 480px;
+  margin: 0 auto 2.5rem;
+}
+
+.hero-cta {
+  opacity: 0;
+}
+
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  opacity: 0;
+
+  span {
+    font-family: $font-body;
+    font-size: 0.6rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba($sand, 0.4);
+  }
+}
+
+.hero-scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba($sand, 0.4), transparent);
+  animation: pulse 2s ease-in-out infinite;
+}

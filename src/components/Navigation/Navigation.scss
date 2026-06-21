@@ -1,0 +1,217 @@
+@use '../../styles/variables' as *;
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-nav;
+  padding: 1.5rem 0;
+  transition: all $transition-base;
+
+  &--scrolled {
+    padding: 1rem 0;
+    background: rgba($stone, 0.9);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: $border-subtle;
+
+    .nav-logo-the,
+    .nav-logo-oasis {
+      color: $charcoal;
+    }
+
+    .nav-link-desktop {
+      color: rgba($charcoal, 0.7);
+
+      &:hover {
+        color: $charcoal;
+      }
+    }
+
+    .nav-burger span {
+      background: $charcoal;
+    }
+  }
+}
+
+.nav-container {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 $container-padding;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  text-decoration: none;
+}
+
+.nav-logo-the {
+  font-family: $font-body;
+  font-size: 0.55rem;
+  font-weight: 300;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: $stone;
+  line-height: 1;
+  transition: color $transition-base;
+}
+
+.nav-logo-oasis {
+  font-family: $font-display;
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: $stone;
+  line-height: 1.1;
+  transition: color $transition-base;
+}
+
+.nav-links-desktop {
+  display: none;
+  gap: 2.5rem;
+
+  @media (min-width: $bp-desktop) {
+    display: flex;
+  }
+}
+
+.nav-link-desktop {
+  font-family: $font-body;
+  font-size: $text-xs;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba($stone, 0.7);
+  transition: color $transition-fast;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: $terracotta;
+    transition: width $transition-base;
+  }
+
+  &:hover {
+    color: $stone;
+
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+.nav-burger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+  z-index: 1001;
+
+  @media (min-width: $bp-desktop) {
+    display: none;
+  }
+
+  span {
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: $stone;
+    transition: all $transition-base;
+    transform-origin: center;
+  }
+
+  &--active {
+    span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+    span:nth-child(2) {
+      opacity: 0;
+    }
+    span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+  }
+}
+
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba($charcoal, 0.97);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity $transition-base;
+
+  &--active {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-menu-link {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  text-decoration: none;
+  opacity: 0;
+}
+
+.nav-menu-link-number {
+  font-family: $font-body;
+  font-size: $text-xs;
+  font-weight: 300;
+  color: $terracotta;
+  letter-spacing: 0.1em;
+}
+
+.nav-menu-link-text {
+  font-family: $font-display;
+  font-size: $text-3xl;
+  font-weight: 400;
+  color: $stone;
+  letter-spacing: 0.02em;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $terracotta;
+  }
+}
+
+.nav-overlay-footer {
+  position: absolute;
+  bottom: 3rem;
+  display: flex;
+  gap: 3rem;
+
+  p {
+    font-family: $font-body;
+    font-size: $text-xs;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba($stone, 0.3);
+  }
+}
